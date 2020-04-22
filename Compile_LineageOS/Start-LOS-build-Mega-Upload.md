@@ -75,6 +75,10 @@
 17. Compile. Example *brunch lineage_CPH1859-eng*
 
         brunch ROMName_DeviceName_BuildVariant  -j(nproc)
+        
+Example:
+
+        brunch lineage_CPH1859-userdebug -j8
 
 or
 
