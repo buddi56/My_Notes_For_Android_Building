@@ -83,11 +83,11 @@ or
 **Fourth phase: Uploading to Mega (Only for people using Google Console aka, GCD)**
 
 18. Install following package:
-
+        
         sudo apt-get install megatools
   
 19. Now use below command to upload file.
-
+        
         megaput <file> -u <username> -p <password>
 
 **Note:** *Mega is not allowing new users to upload files. The memory you use for ccache is permanent (You cannot use that storage for storing files).*
