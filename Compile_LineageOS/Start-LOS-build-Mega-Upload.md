@@ -80,11 +80,11 @@ Remember to replace 16 in -Xmx16g with half the value of your RAM. Eg: If I have
 
 **Fourth phase: Start compiling**
 
-16. Start build
+17. Start build
 
         . build/envsetup.sh
 
-17. Compile. Example *brunch lineage_CPH1859-eng*
+18. Compile. Example *brunch lineage_CPH1859-eng*
 
         brunch ROMName_DeviceName_BuildVariant  -j(nproc)
         
@@ -98,11 +98,11 @@ or
 
 **Fifth phase: Uploading to Mega (through terminal)**
 
-18. Install following package:
+19. Install following package:
         
         sudo apt-get install megatools
   
-19. Now use below command to upload file.
+20. Now use below command to upload file.
         
         megaput <file> -u <username> -p <password>
 
