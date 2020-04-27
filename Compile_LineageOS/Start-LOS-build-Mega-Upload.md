@@ -2,7 +2,11 @@
 
 **Initial phase: install git and repo tools**
 
-1. First step is to install required packages for Git.
+0. Check for updates, always.
+
+        sudo apt-get update && sudo apt-get upgrade
+
+1. Install required packages.
 
         sudo apt-get install android-tools-adb android-tools-fastboot git-core gnupg flex bison gperf build-essential zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev libgl1-mesa-dev libxml2-utils xsltproc unzip python
 
@@ -14,7 +18,7 @@
 
         PATH=~/bin:$PATH
 
-4.Downoad the repo tool.
+4. Downoad the repo tool.
 
         curl https://storage.googleapis.com/git-repo-downloads/repo > ~/bin/repo
 
@@ -38,7 +42,7 @@
 
 9. Input Git username or simply enter random value
 
-        git config --global user.name "Your Git User Name here"
+        git config --global user.name "Your Git UserName here"
 
 10. Input Git Mail or simply enter random one
 
@@ -48,25 +52,33 @@
 
         repo init -u git://github.com/LineageOS/android.git -b lineage-16.0
 
-12. Get npro value
+12. Get nproc value
 
         nproc (get "n" from here)
 
 13. Use the above ```nproc``` vaue to sync source code using multiple threads. This takes lot of time, depends on the nproc value and Internet Speed.
 
-        repo sync -jn --force-sync
+        repo sync -j(nproc) --force-sync
 
-**Third phase: Start Compiling**
+**Third phase: Setting ccache and Jack**
 
 14. Use CCACHE. If you want to use Ccache then execute below 3 commands. CCache is used to quicken build speed.
 
         export USE_CCACHE=1
 
-15. Input the storage yu want to use for ccache. Here I used 50G (means 50 GB). If you build for multile devices then this is enough, but for 1 device you can use 25GB and this storage is permanently used.
+15. Input the storage yu want to use for ccache. Here I used 50G (means 50 GB). If you build for multile devices then this is enough, but for 1 device you can use 25GB and this storage is permanent.
 
         prebuilts/misc/linux-x86/ccache/ccache -M 50G
         
         export CCACHE_COMPRESS=1
+        
+16. Setup Jack, use below command
+
+        export ANDROID_JACK_VM_ARGS="-Xmx16g -Dfile.encoding=UTF-8 -XX:+TieredCompilation"
+        
+Remember to replace 16 in -Xmx16g with half the value of your RAM. Eg: If I have 16GB RAM then it is -Xmx8g.
+
+**Fourth phase: Start compiling**
 
 16. Start build
 
@@ -84,7 +96,7 @@ or
 
         make bacon -j(nproc)
 
-**Fourth phase: Uploading to Mega (Only for people using Google Console aka, GCD)**
+**Fifth phase: Uploading to Mega (through terminal)**
 
 18. Install following package:
         
@@ -94,4 +106,4 @@ or
         
         megaput <file> -u <username> -p <password>
 
-**Note:** *Mega is not allowing new users to upload files. The memory you use for ccache is permanent (You cannot use that storage for storing files).*
+**Note:** *Mega is not allowing new users (accounts made after 11/06/2018) to upload files. The memory you use for ccache is permanent (You cannot use that storage for storing files).*
