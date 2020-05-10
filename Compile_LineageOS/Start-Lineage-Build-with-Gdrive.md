@@ -58,7 +58,7 @@
 
 **Third phase: Start Compiling**
 
-14. Use CCACHE. If you want to use Ccache then execute below 3 commands. CCache is used to quicken build speed.
+14. Use ccache for faster build times. If you want to use ccache then execute below 3 commands.
 
         export USE_CCACHE=1
 
@@ -67,6 +67,10 @@
         prebuilts/misc/linux-x86/ccache/ccache -M 50G
         
         export CCACHE_COMPRESS=1
+
+For Android 10 you have to use below commands to enable ccache. Above 3 commands works with Android 9 and below versions only.
+
+        export USE_CCACHE=1; export USE_CCACHE_EXEC=$(command -v ccache); ccache -M 50G;
 
 16. Start build
 
