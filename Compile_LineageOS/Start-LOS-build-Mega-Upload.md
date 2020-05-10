@@ -62,6 +62,8 @@
 
 **Third phase: Setting ccache and Jack**
 
+__a. ccache in Android 9 and below__
+
 14. Use CCACHE. If you want to use Ccache then execute below 3 commands. CCache is used to quicken build speed.
 
         export USE_CCACHE=1
@@ -71,6 +73,12 @@
         prebuilts/misc/linux-x86/ccache/ccache -M 50G
         
         export CCACHE_COMPRESS=1
+        
+__b. ccache in Android 10__
+
+        export USE_CCACHE=1; export USE_CCACHE_EXEC=$(command -v ccache); ccache -M 50G;
+        
+ where 50G is the space allocated to cache.
         
 16. Setup Jack, use below command
 
