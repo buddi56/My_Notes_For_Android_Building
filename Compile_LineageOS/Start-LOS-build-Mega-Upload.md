@@ -58,7 +58,7 @@
 
 13. Use the above ```nproc``` vaue to sync source code using multiple threads. This takes lot of time, depends on the nproc value and Internet Speed.
 
-        repo sync -j(nproc) --force-sync
+        repo sync -j$(nproc) --force-sync
 
 **Third phase: Setting ccache and Jack**
 
